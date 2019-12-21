@@ -18,6 +18,8 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import HomeScreen from './src/screens/HomeScreen'
 import ProfileScreen from './src/screens/ProfileScreen'
 import NotificationScreen from './src/screens/NotificationScreen'
+import SearchScreen from './src/screens/SearchScreen'
+import MemberScreen from './src/screens/MemberScreen'
 
 import stores from './src/stores'
 
@@ -59,7 +61,7 @@ const LoginStack = createStackNavigator(
   }
 )
 
-const HomeStack = createStackNavigator(
+const MainStack = createStackNavigator(
   {
     Home: { 
       screen: HomeScreen,
@@ -72,6 +74,14 @@ const HomeStack = createStackNavigator(
     Notification: { 
       screen: NotificationScreen,
       routeName: '알림',
+    },
+    Search: {
+      screen: SearchScreen,
+      routeName: '검색'
+    },
+    Member: {
+      screen: MemberScreen,
+      routeName: '가족 구성'
     }
   },
   {
@@ -81,25 +91,6 @@ const HomeStack = createStackNavigator(
         shadowOffset: { height: 0, width: 0 },
         shadowOpacity: 0,
         shadowRadius: 0,
-        backgroundColor: '#fff',
-        shadowColor: "transparent"
-      }
-    })
-  }
-)
-
-const MainStack = createStackNavigator(
-  {
-    Home: { screen: HomeStack },
-  },
-  {
-    defaultNavigationOptions: ({
-      headerStyle: {
-        elevation: 0,
-        shadowOffset: { height: 0, width: 0 },
-        shadowOpacity: 0,
-        shadowRadius: 0,
-        height: 0,
         backgroundColor: '#fff',
         shadowColor: "transparent"
       }

@@ -16,7 +16,7 @@ import {
   COLOR_GRAY
   } from '../constants/color'
 
-import { ICON_NOTI, ICON_BACK } from '../constants/image'
+import { ICON_NOTI, ICON_BACK, ICON_PROFILE } from '../constants/image'
 import { width, height } from '../constants/size'
 
 class HeaderComponent extends React.Component{
@@ -42,7 +42,7 @@ class HeaderComponent extends React.Component{
         <SafeAreaView style={styles.container}>
           <View style={styles.mainContainer}>
             <TouchableOpacity onPress={() => this.onProfile()}>
-              <Image style={styles.profile}/>
+              <Image style={styles.profile} source={ICON_PROFILE}/>
             </TouchableOpacity>
             <Text style={styles.mainText}>CATCHER</Text>
             <TouchableOpacity onPress={() => this.onNotification()}>
