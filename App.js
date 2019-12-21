@@ -7,108 +7,111 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { StatusBar } from 'react-native';
+import { Provider } from 'mobx-react';
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from 'react-navigation-stack';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import RegisterScreen from './src/screens/RegisterScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+import HomeScreen from './src/screens/HomeScreen'
+import ProfileScreen from './src/screens/ProfileScreen'
+import NotificationScreen from './src/screens/NotificationScreen'
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+import stores from './src/stores'
+
+class App extends React.Component{
+  render(){
+    return (
+      <>
+        <StatusBar barStyle="dark-content"/>
+        <Provider {...stores}>
+          <AppContainer/>
+        </Provider>
+      </>
+    );
+  }
+}
+
+const LoginStack = createStackNavigator(
+  {
+    Login: { 
+      screen: LoginScreen,
+      routeName: '로그인',
+    },
+    Register : { 
+      screen: RegisterScreen,
+      routeName: '회원가입',
+    }
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  {
+    defaultNavigationOptions: ({
+      headerStyle: {
+        elevation: 0,
+        shadowOffset: { height: 0, width: 0 },
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        backgroundColor: '#fff',
+        shadowColor: "transparent"
+      }
+    })
+  }
+)
+
+const HomeStack = createStackNavigator(
+  {
+    Home: { 
+      screen: HomeScreen,
+      routeName: '메인',
+    },
+    Profile: { 
+      screen: ProfileScreen,
+      routeName: '프로필',
+    },
+    Notification: { 
+      screen: NotificationScreen,
+      routeName: '알림',
+    }
   },
-  body: {
-    backgroundColor: Colors.white,
+  {
+    defaultNavigationOptions: ({
+      headerStyle: {
+        elevation: 0,
+        shadowOffset: { height: 0, width: 0 },
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        backgroundColor: '#fff',
+        shadowColor: "transparent"
+      }
+    })
+  }
+)
+
+const MainStack = createStackNavigator(
+  {
+    Home: { screen: HomeStack },
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+  {
+    defaultNavigationOptions: ({
+      headerStyle: {
+        elevation: 0,
+        shadowOffset: { height: 0, width: 0 },
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        height: 0,
+        backgroundColor: '#fff',
+        shadowColor: "transparent"
+      }
+    })
+  }
+)
+
+const MainSwitch = createSwitchNavigator({
+  Login: LoginStack,
+  Main: MainStack
+})
+
+const AppContainer = createAppContainer(MainSwitch);
 
 export default App;
