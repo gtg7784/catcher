@@ -165,7 +165,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 6
   },
   searchTitle: {
     fontSize: 12,

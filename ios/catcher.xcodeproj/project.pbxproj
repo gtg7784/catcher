@@ -644,7 +644,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gtg7784;
 				PRODUCT_NAME = catcher;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -664,7 +664,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gtg7784;
 				PRODUCT_NAME = catcher;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -691,7 +691,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.catcher-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gtg7784;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -720,7 +720,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.catcher-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gtg7784;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
